@@ -18,7 +18,7 @@ module "ecs" {
 }
 
 module "alb" {
-	source = "github.com/outerstack/ecs-cluster"
+	source = "github.com/outerstack/alb"
 	name = "outerstack-io"
 	route53_cname = "REPLACEWITHYOURDOMAIN.IO"
 	route53_zone_id = "REPLACEWITHYOURROUTE53ZONEID"
