@@ -20,9 +20,9 @@ module "ecs" {
 module "alb" {
 	source = "github.com/outerstack/ecs-cluster"
 	name = "outerstack-io"
-	route53_cname = "outerstack.io"
-	route53_zone_id = "Z2F9K1T0LTFXHB"
-	cert_dir = "~/outerstack/ssl/outerstack.io"
+	route53_cname = "REPLACEWITHYOURDOMAIN.IO"
+	route53_zone_id = "REPLACEWITHYOURROUTE53ZONEID"
+	cert_dir = "~/directory/path/for/your/ssl/certs"
 	subnets = "${module.vpc.public_subnets}"
 	vpc_id = "${module.vpc.id}"
 }
@@ -30,7 +30,7 @@ module "alb" {
 module "app" {
 	source = "github.com/outerstack/ecs-service"
 	name = "io-app"
-	registry = "341734255325.dkr.ecr.us-east-1.amazonaws.com"	
+	registry = "YOURAWSACCOUNT.dkr.ecr.AWSREGION.amazonaws.com"	
 	cluster_id = "${module.ecs.id}"
 	target_group_arn = "${module.alb.target_group_arn}"
 }
